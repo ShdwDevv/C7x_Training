@@ -22,7 +22,7 @@ Rewrite this program so that it can perform SIMD operations.
 ```
 ### PSEUDO CODE
 ```
-Initialize valriables
+Initialize variables
 Assign input values
 Iterate from 0 to size - 1
     Load input values
@@ -33,3 +33,22 @@ Iterate from 0 to size - 1
 ![alt text](image.png)
 ### Need to improve
 * Code need to work for all Sizes
+## Absolute Value
+### Question
+```
+Obtain the absolute values for 16 real numbers defined in a scalar array. Rewrite this program so that it can perform SIMD operations.
+```
+### PSEUDE CODE
+```
+Initialize variables
+Assign input values
+Iterate from 0 to size - 1
+    Load input values
+    Create the pattern/mask
+    Create a Negative vector
+    Use blend between Negative vector and input vector
+    Store the result
+Handle the remaning values 
+```
+### Output
+![alt text](image-2.png)
