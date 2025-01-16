@@ -52,3 +52,26 @@ Handle the remaning values
 ```
 ### Output
 ![alt text](image-2.png)
+## RGB To Gray Scale
+### Question
+```
+Practice Program (2-4) shows a code snippet taken from a program used to convert color images into grayscale images. More precisely, it displays the rgb2y() function that undertakes grayscale conversion.
+Rewrite this function so that it can perform SIMD operations.
+Grayscale conversion involves extraction of brightness data Y from each pixel’s RGB values to make it possible to render images composed of shades of gray. The formula used for brightness calculation is shown below.
+(Brightness calculation formula)　fY(R, G, B) ＝ R x 0.29891 + G x 0.58661 + B x 0.11448
+```
+### PSEUDE CODE
+```
+Initialize variables
+Assign input values
+Load input values
+Unpach the low and high values
+Shuffle the vector
+Multiply the seperate RGB value to its constant
+ADD everything and store it in result
+Store the result
+```
+### Problem 
+* it wont work for all the dimensions
+### Output
+![alt text](image-3.png)
