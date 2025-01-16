@@ -2,16 +2,15 @@
 #include "immintrin.h"
 using namespace std;
 #define MAX_NUM (2048)
-int normal_addition(){
+void normal_addition(){
     int sum = 0, iterations = 0;
     for(int val = 1;val <= MAX_NUM;val++){
         sum += val;
         iterations++;
     }
     cout<<"Total : "<<sum<<" Iterations : "<<iterations<<endl;
-    return sum;
 }
-int intrinsic_function(){
+void intrinsic_function(){
     int sum = 0, iterations = 0;
     __m256i eight_step = _mm256_set1_epi32(8);
     __m256i sum_vector = _mm256_set1_epi32(0);
@@ -27,9 +26,8 @@ int intrinsic_function(){
     for(auto val : res) sum += val;
     cout<<endl;
     cout<<"Total : "<<sum<<" Iterations : "<<iterations<<endl;
-    return sum;
 }
 int main(){
-    int res1 = normal_addition();
-    int res2 = intrinsic_function();
+    normal_addition();
+    intrinsic_function();
 }
