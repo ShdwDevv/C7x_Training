@@ -40,5 +40,5 @@
     * DMA waits for idle cycles when the CPU is not using the bus.
     * Transfers data without interrupting CPU tasks.
     * Continues until the transfer is complete.
-    
+
 ![alt text](image-10.png)
