@@ -75,3 +75,14 @@
         * Data Path B
         * There are 16 32-bit register in each register file
         * So that there are 32 32-bit resigter in C67X
+        * Data Path A  has
+            * L1 , S1 , D1 - ALU units
+            * M1 - Multiplier units
+        * Data Path B  has
+            * L2 , S2 , D2 - ALU units
+            * M2 - Multiplier units
+    * Control Register
+    * Control Unit
+    * Test, emulation  and interrupt logic
+* IT contains DMA controller which transfer data from external device to inteernal memory without using the CPU . It contains 4 programmable channel , 5 auxillary channel
+* EDMA (Extended DMA controller)
