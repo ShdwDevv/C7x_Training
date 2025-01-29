@@ -98,7 +98,7 @@ export SOC=j721e
 ## Build the TIDL PC Tools
 * Before that just refer this file
 ```sh
-/home/arshathahamed10/PSDKRA/ti-processor-sdk-rtos-j721e-evm-09_00_01_01/c7x-mma-tidl/makerules/config.mk
+ti-processor-sdk-rtos-j721e-evm-09_00_01_01/c7x-mma-tidl/makerules/config.mk
 ```
 ![alt text](image-5.png)
 * In this i change the directory path for the tensorflow and see the PSDK_TOOLS_PATH , it will be helpful in upcoming process
@@ -151,7 +151,28 @@ TIDL_TB_FILES += tidl_lidar_preproc.c
     ```
 
 # Error I got
-## 1. c7x.h is not loaded
+## 1. memset error while do the makefile for flatbuffer
+![alt text](image-10.png)
+* While doing cmake , add the following flag
+```sh
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wno-class-memaccess"
+# Then run make
+make
+```
+## 2. Tensorflow command
+```
+while running make TARGET_PLATFORM=PC command in buildinf TIDL_RT , it says that tensorflow is not found
+```
+* To solve this , go to the ti-processor-sdk-rtos-j721e-evm-09_00_01_01/c7x-mma-tidl/makerules/config.mk and change the 
+```
+TF_REPO_PATH?=$(PSDK_INSTALL_PATH)/targetfs/usr/include/tensorflow
+
+To
+
+TF_REPO_PATH ?=$(PSDK_INSTALL_PATH)/tensorflow
+```
+![alt text](image-11.png)
+## 3. c7x.h is not loaded
 ![alt text](image.png)
 * For this i download the c7x dsp compiler by manual from this [link](https://www.ti.com/tool/download/C7000-CGT/4.1.0.LTS) 
 * create a **ti** directory in the home and store the file and run the command
@@ -159,6 +180,20 @@ TIDL_TB_FILES += tidl_lidar_preproc.c
     ./ti_cgt_c7000_4.1.0.LTS_linux-x64_installer.bin
     ```
 * See the path is stored in config.mk
-![alt text](image-9.png)
 
+    ![alt text](image-9.png)
 
+## 4.Running the test makefile 
+```
+It didnt genetate PC_dsp_test_dl_algo.out file in ti-processor-sdk-rtos-j721e-evm-09_00_01_01/c7x-mma-tidl/ti_dl/test/out/PC/x86_64/LINUX/debug/ directory
+```
+![alt text](testing.png)
+* Solution is we need to comment some line in ti-processor-sdk-rtos-j721e-evm-09_00_01_01/c7x-mma-tidl/ti_dl/test/src/pc_linux/concerto.mak
+```
+68 # STATIC_LIBS += tidl_custom
+71 # STATIC_LIBS += tidl_algo
+72 # STATIC_LIBS += tidl_obj_algo
+73 # STATIC_LIBS += tidl_priv_algo
+116 # STATIC_LIBS += IlmImf
+126 # STATIC_LIBS += tidl_avx_kernels
+```
