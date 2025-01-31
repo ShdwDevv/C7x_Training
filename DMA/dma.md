@@ -41,3 +41,9 @@
     * Transfers data without interrupting CPU tasks.
     * Continues until the transfer is complete.
 ![alt text](images/image-10.png)
+
+* Back to [UDMA](../UDMA/udma.md)
+
+* Go though the mm8a Makefile script and main thing in
+* KT
+* TDA 4VM processor  
