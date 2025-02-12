@@ -197,3 +197,6 @@ It didnt genetate PC_dsp_test_dl_algo.out file in ti-processor-sdk-rtos-j721e-ev
 116 # STATIC_LIBS += IlmImf
 126 # STATIC_LIBS += tidl_avx_kernels
 ```
+
+
+cl7x
